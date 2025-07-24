@@ -1,0 +1,26 @@
+# Ignore local Python virtual environments and caches
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore version control and IDE/editor folders
+.git/
+.idea/
+.vscode/
+
+# Ignore everything by default (except what’s listed below)
+*
+
+# Allow only these files and directories into the build context:
+!app.py
+!extractor.py
+!db_utils.py
+!requirements.txt
+!models/
+!models/lp_uae_detection.pt
+!models/lp_ocr_uae.pt
+!Dockerfile
+!.dockerignore
