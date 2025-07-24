@@ -3,7 +3,7 @@ name: Build and Deploy Docker to Azure Web App
 on:
   push:
     branches:
-      - main   # Change to your default branch if needed
+      - main      # Change to your branch if not using 'main'
   workflow_dispatch:
 
 jobs:
@@ -25,9 +25,9 @@ jobs:
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/uae-lpr:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/uae-lpr:latest
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'YOUR_AZURE_WEBAPP_NAME'      # e.g., lp-uae
+          app-name: 'lp'
           slot-name: 'Production'
           images: 'docker.io/${{ secrets.DOCKERHUB_USERNAME }}/uae-lpr:latest'
