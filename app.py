@@ -20,6 +20,9 @@ ocr_extractor = YOLOPlateNumberExtractor(OCR_MODEL_PATH, conf=0.25, device="cpu"
 app = FastAPI()
 
 from db_utils import insert_result
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
 @app.post("/api/extract")
 async def extract_plate(file: UploadFile = File(...)):
